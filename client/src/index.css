@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-black-50 dark:bg-black-950 text-black-900 dark:text-black-50;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  code {
+    @apply font-mono text-sm bg-black-100 dark:bg-black-800 px-1 py-0.5 rounded;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+}
+
+@layer components {
+  /* Card Components */
+  .card {
+    @apply bg-white dark:bg-black-900 border border-black-100 dark:border-black-800 rounded-lg shadow-elevation-1;
+  }
+
+  .card-hover {
+    @apply hover:shadow-elevation-2 hover:-translate-y-0.5;
+  }
+
+  .card-pattern {
+    @apply bg-grid-pattern bg-grid dark:bg-dots-pattern dark:bg-dots;
+  }
+
+  /* Button Components */
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white shadow-elevation-1;
+  }
+
+  .btn-secondary {
+    @apply bg-purple-600 hover:bg-purple-700 text-white shadow-elevation-1;
+  }
+
+  .btn-success {
+    @apply bg-green-600 hover:bg-green-700 text-white shadow-elevation-1;
+  }
+
+  .btn-danger {
+    @apply bg-red-600 hover:bg-red-700 text-white shadow-elevation-1;
+  }
+
+  .btn-outlined {
+    @apply border-2 bg-transparent hover:bg-black-50 dark:hover:bg-black-800;
+  }
+
+  .btn-text {
+    @apply bg-transparent hover:bg-black-50 dark:hover:bg-black-800;
+  }
+
+  /* Input Components */
+  .input {
+    @apply w-full px-4 py-2 rounded-lg border border-black-200 dark:border-black-700 bg-white dark:bg-black-800 text-black-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-black-700 dark:text-black-300 mb-1;
+  }
+
+  /* Typography */
+  .heading-1 {
+    @apply text-3xl font-bold text-black-900 dark:text-white;
+  }
+
+  .heading-2 {
+    @apply text-2xl font-bold text-black-900 dark:text-white;
+  }
+
+  .heading-3 {
+    @apply text-xl font-bold text-black-900 dark:text-white;
+  }
+
+  .text-primary {
+    @apply text-blue-600 dark:text-blue-400;
+  }
+
+  .text-secondary {
+    @apply text-purple-600 dark:text-purple-400;
+  }
+
+  .text-success {
+    @apply text-green-600 dark:text-green-400;
+  }
+
+  .text-danger {
+    @apply text-red-600 dark:text-red-400;
+  }
+
+  /* Alert Components */
+  .alert {
+    @apply p-4 rounded-md mb-4;
+  }
+
+  .alert-success {
+    @apply bg-success-light/20 text-success-dark dark:bg-success-dark/20 dark:text-success-light;
+  }
+
+  .alert-error {
+    @apply bg-error-light/20 text-error-dark dark:bg-error-dark/20 dark:text-error-light;
+  }
+
+  .alert-warning {
+    @apply bg-warning-light/20 text-warning-dark dark:bg-warning-dark/20 dark:text-warning-light;
+  }
+
+  /* Badge Components */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-primary {
+    @apply bg-black-900 text-white dark:bg-black-800 dark:text-black-100;
+  }
+
+  .badge-secondary {
+    @apply bg-black-800 text-white dark:bg-black-700 dark:text-black-100;
+  }
+
+  .badge-success {
+    @apply bg-success-light/20 text-success-dark dark:bg-success-dark/20 dark:text-success-light;
+  }
+
+  .badge-error {
+    @apply bg-error-light/20 text-error-dark dark:bg-error-dark/20 dark:text-error-light;
+  }
+
+  /* Chip Components */
+  .chip {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .chip-primary {
+    @apply bg-black-900 text-white dark:bg-black-800 dark:text-black-100;
+  }
+
+  .chip-secondary {
+    @apply bg-black-800 text-white dark:bg-black-700 dark:text-black-100;
+  }
+
+  /* Divider */
+  .divider {
+    @apply border-t border-black-200 dark:border-black-700 my-4;
+  }
+
+  /* List Components */
+  .list {
+    @apply divide-y divide-black-200 dark:divide-black-700;
+  }
+
+  .list-item {
+    @apply py-4 px-4 hover:bg-black-50 dark:hover:bg-black-800 transition-colors duration-200;
+  }
+
+  /* Background Patterns */
+  .bg-pattern-grid {
+    @apply bg-grid-pattern bg-grid;
+    background-size: 30px 30px;
+  }
+
+  .bg-pattern-dots {
+    @apply bg-dots-pattern bg-dots;
+    background-image: radial-gradient(circle, #000000 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .bg-pattern-noise {
+    @apply bg-noise-pattern;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  /* Glass Effect */
+  .glass {
+    @apply bg-white/80 dark:bg-black-900/80 backdrop-blur-sm border border-black-100/50 dark:border-black-800/50;
+  }
+
+  .glass-hover {
+    @apply hover:bg-white/90 dark:hover:bg-black-900/90;
+  }
+} 
