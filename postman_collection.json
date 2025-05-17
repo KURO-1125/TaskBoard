@@ -1,0 +1,499 @@
+{
+	"info": {
+		"_postman_id": "taskboard-pro-api",
+		"name": "TaskBoard Pro API",
+		"description": "API collection for TaskBoard Pro - Advanced Task Collaboration App with Workflow Automation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Google OAuth Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/google",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "auth", "google"]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"google-oauth-token\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Get Current User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/me",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "auth", "me"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Projects",
+			"item": [
+				{
+					"name": "List Projects",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/projects",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "projects"]
+						}
+					}
+				},
+				{
+					"name": "Create Project",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"New Project\",\n    \"description\": \"Project description\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/projects",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "projects"]
+						}
+					}
+				},
+				{
+					"name": "Get Project Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/projects/:id",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "projects", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "project-id"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Project",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Updated Project\",\n    \"description\": \"Updated description\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/projects/:id",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "projects", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "project-id"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete Project",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/projects/:id",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "projects", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "project-id"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Invite User to Project",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"user@example.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/projects/:id/invite",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "projects", ":id", "invite"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "project-id"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Tasks",
+			"item": [
+				{
+					"name": "List Project Tasks",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/projects/:projectId/tasks",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "projects", ":projectId", "tasks"],
+							"variable": [
+								{
+									"key": "projectId",
+									"value": "project-id"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Task",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"New Task\",\n    \"description\": \"Task description\",\n    \"status\": \"To Do\",\n    \"dueDate\": \"2024-03-20T00:00:00.000Z\",\n    \"assignee\": \"user-id\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/projects/:projectId/tasks",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "projects", ":projectId", "tasks"],
+							"variable": [
+								{
+									"key": "projectId",
+									"value": "project-id"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Task",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Updated Task\",\n    \"description\": \"Updated description\",\n    \"status\": \"In Progress\",\n    \"dueDate\": \"2024-03-21T00:00:00.000Z\",\n    \"assignee\": \"user-id\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/tasks/:id",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "tasks", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "task-id"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete Task",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/tasks/:id",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "tasks", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "task-id"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Add Task Comment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"text\": \"This is a comment\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/tasks/:id/comments",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "tasks", ":id", "comments"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "task-id"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Automations",
+			"item": [
+				{
+					"name": "List Project Automations",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/projects/:projectId/automations",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "projects", ":projectId", "automations"],
+							"variable": [
+								{
+									"key": "projectId",
+									"value": "project-id"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Automation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"trigger\": {\n        \"type\": \"status_change\",\n        \"conditions\": {\n            \"newStatus\": \"Done\"\n        }\n    },\n    \"actions\": [\n        {\n            \"type\": \"assign_badge\",\n            \"params\": {\n                \"badgeType\": \"task_completion\",\n                \"userId\": \"{{task.assignee}}\"\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/projects/:projectId/automations",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "projects", ":projectId", "automations"],
+							"variable": [
+								{
+									"key": "projectId",
+									"value": "project-id"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Automation",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"trigger\": {\n        \"type\": \"status_change\",\n        \"conditions\": {\n            \"newStatus\": \"Done\"\n        }\n    },\n    \"actions\": [\n        {\n            \"type\": \"send_notification\",\n            \"params\": {\n                \"message\": \"Task completed!\"\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/automations/:id",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "automations", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "automation-id"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete Automation",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/automations/:id",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "automations", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "automation-id"
+								}
+							]
+						}
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:5000"
+		},
+		{
+			"key": "token",
+			"value": "your-jwt-token"
+		}
+	]
+} 

@@ -1,6 +1,10 @@
 # TaskBoard Pro
 
-An advanced task collaboration platform with workflow automation capabilities.
+## Project Introduction
+
+TaskBoard Pro is an advanced project collaboration platform that combines Kanban-style task management with powerful workflow automation capabilities. Built with modern web technologies, it enables teams to streamline their project workflows through customizable automation rules and real-time collaboration features.
+
+---
 
 ## Features
 
@@ -9,7 +13,6 @@ An advanced task collaboration platform with workflow automation capabilities.
 - 📊 Project Management
   - Create and manage projects
   - Invite team members
-  - Role-based access control
 - ✅ Task Management
   - Create and assign tasks
   - Kanban-style board view
@@ -20,9 +23,9 @@ An advanced task collaboration platform with workflow automation capabilities.
   - Real-time notifications
 
 ### Bonus Features
-- 💬 Real-time updates using WebSockets
 - 💭 Task commenting system
-- 🏆 User achievement badges
+
+---
 
 ## Tech Stack
 
@@ -31,13 +34,14 @@ An advanced task collaboration platform with workflow automation capabilities.
 - Redux Toolkit for state management
 - Tailwind CSS for styling
 - Firebase Authentication
-- Socket.io-client for real-time features
+
 
 ### Backend
 - Node.js with Express
 - MongoDB with Mongoose
-- Socket.io for real-time communication
 - JWT for authentication
+
+---
 
 ## Project Structure
 
@@ -61,6 +65,8 @@ taskboard-pro/
     │   └── utils/        # Utility functions
     └── config/           # Configuration files
 ```
+
+---
 
 ## Database Schema
 
@@ -128,6 +134,8 @@ taskboard-pro/
 }
 ```
 
+---
+
 ## API Documentation
 
 ### Authentication
@@ -154,6 +162,88 @@ taskboard-pro/
 - `POST /api/projects/:projectId/automations` - Create automation
 - `PUT /api/automations/:id` - Update automation
 - `DELETE /api/automations/:id` - Delete automation
+
+---
+
+## Automation Examples
+
+### Example 1: Task Completion Badge
+```json
+{
+  "trigger": {
+    "type": "status_change",
+    "conditions": {
+      "newStatus": "Done"
+    }
+  },
+  "actions": [
+    {
+      "type": "assign_badge",
+      "params": {
+        "badgeType": "task_completion",
+        "userId": "{{task.assignee}}"
+      }
+    }
+  ]
+}
+```
+
+### Example 2: Auto-Progress on Assignment
+```json
+{
+  "trigger": {
+    "type": "assignment",
+    "conditions": {
+      "userId": "specific_user_id"
+    }
+  },
+  "actions": [
+    {
+      "type": "change_status",
+      "params": {
+        "newStatus": "In Progress"
+      }
+    }
+  ]
+}
+```
+
+### Example 3: Due Date Notification
+```json
+{
+  "trigger": {
+    "type": "due_date",
+    "conditions": {
+      "timeframe": "24h_before"
+    }
+  },
+  "actions": [
+    {
+      "type": "send_notification",
+      "params": {
+        "recipient": "{{task.assignee}}",
+        "message": "Task '{{task.title}}' is due in 24 hours"
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Video Demo
+
+A 3-5 minute demo video is available on Loom/YouTube:
+
+- [Demo Video Link](https://your-demo-link.com)
+
+**The demo covers:**
+- User login with Google OAuth
+- Project creation and team invitation
+- Task creation and movement between statuses
+- Automation trigger demonstration
+
+---
 
 ## Getting Started
 
@@ -182,14 +272,10 @@ taskboard-pro/
    npm start
    ```
 
-## Contributing
+---
 
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a new Pull Request
+## Optional: Postman Collection
 
-## License
+A Postman collection for all backend APIs is available here:
 
-This project is licensed under the MIT License. 
+- [Download Postman Collection](./postman_collection.json)
