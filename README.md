@@ -274,8 +274,4 @@ A 3-5 minute demo video is available on Loom/YouTube:
 
 ---
 
-## Optional: Postman Collection
 
-A Postman collection for all backend APIs is available here:
-
-- [Download Postman Collection](./postman_collection.json)
